@@ -252,7 +252,7 @@ patient-management-app/
 1. **Clone the repository**
    ```bash
    git clone https://github.com/Itan940/Challenge.git
-   cd patient-management-app
+   cd PatientManager
    ```
 
 2. **Install dependencies**
