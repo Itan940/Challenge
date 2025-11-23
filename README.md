@@ -2,6 +2,33 @@
 
 A modern, responsive patient management application built with React, TypeScript, and Vite. This application allows users to view, add, edit, and delete patient records with a clean, intuitive interface.
 
+## 🚦 Getting Started
+
+### Prerequisites
+- Node.js (version 16.x or higher recommended)
+- npm (comes with Node.js)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Itan940/Challenge.git
+   cd Challenge
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to `http://localhost:5173` (or the URL shown in your terminal)
+
 ## 🚀 Features
 
 - **Patient List Display**: View all patients in a responsive grid layout with individual cards
@@ -240,55 +267,6 @@ patient-management-app/
 - **Typography**: 
   - Ubuntu font for headings/titles
   - Manrope font for body text
-
-## 🚦 Getting Started
-
-### Prerequisites
-- Node.js (version 16.x or higher recommended)
-- npm (comes with Node.js)
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Itan940/Challenge.git
-   cd Challenge
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start the development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser**
-   Navigate to `http://localhost:5173` (or the URL shown in your terminal)
-
-### Available Scripts
-
-- `npm run dev` - Start the development server
-- `npm run build` - Build the production-ready application
-- `npm run preview` - Preview the production build locally
-- `npm run lint` - Run ESLint to check code quality
-- `npm run format` - Format code with Prettier
-
-## 🧪 Building for Production
-
-To create a production build:
-
-```bash
-npm run build
-```
-
-The built files will be in the `dist` folder. You can preview the production build:
-
-```bash
-npm run preview
-```
 
 ## 🎯 Key Features Implementation
 
