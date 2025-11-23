@@ -14,6 +14,7 @@ export const PatientForm = ({ patient, onSubmit, onCancel }: PatientFormProps) =
     name: patient?.name || '',
     website: patient?.website || '',
     description: patient?.description || '',
+    avatar: patient?.avatar || '',
   });
 
   const [errors, setErrors] = useState<ValidationErrors>({});
@@ -25,6 +26,7 @@ export const PatientForm = ({ patient, onSubmit, onCancel }: PatientFormProps) =
         name: patient.name,
         website: patient.website,
         description: patient.description,
+        avatar: patient.avatar,
       });
     }
   }, [patient]);
@@ -52,7 +54,7 @@ export const PatientForm = ({ patient, onSubmit, onCancel }: PatientFormProps) =
     e.preventDefault();
 
     // Mark all fields as touched
-    setTouched({ name: true, website: true, description: true });
+    setTouched({ name: true, website: true, description: true, avatar: true });
 
     // Validate form
     const validationErrors = validatePatientForm(formData);
@@ -84,7 +86,7 @@ export const PatientForm = ({ patient, onSubmit, onCancel }: PatientFormProps) =
 
       <div className="form-group">
         <label htmlFor="website" className="form-label">
-          Website <span className="required">*</span>
+          Website
         </label>
         <input
           type="text"
@@ -98,6 +100,25 @@ export const PatientForm = ({ patient, onSubmit, onCancel }: PatientFormProps) =
         />
         {touched.website && errors.website && (
           <span className="form-error">{errors.website}</span>
+        )}
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="avatar" className="form-label">
+          Avatar URL
+        </label>
+        <input
+          type="text"
+          id="avatar"
+          name="avatar"
+          className={`form-input ${touched.avatar && errors.avatar ? 'form-input-error' : ''}`}
+          value={formData.avatar}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder="https://example.com/image.jpg"
+        />
+        {touched.avatar && errors.avatar && (
+          <span className="form-error">{errors.avatar}</span>
         )}
       </div>
 

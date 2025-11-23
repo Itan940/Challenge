@@ -1,37 +1,49 @@
 .app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #2a2d3e;
 }
 
 .app-header {
-  background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: #1f2233;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
 .header-content {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  width: 100%;
+}
+
+.header-title-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-logo {
+  height: 40px;
+  width: auto;
 }
 
 .app-title {
   margin: 0 0 4px 0;
   font-size: 28px;
   font-weight: 700;
-  color: #111827;
+  color: #fcfcfc;
 }
 
 .app-subtitle {
   margin: 0;
   font-size: 14px;
-  color: #6b7280;
+  color: #9ca3af;
 }
 
 .add-button {
@@ -39,8 +51,8 @@
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  background-color: #3b82f6;
-  color: white;
+  background-color: #6366f1;
+  color: #fcfcfc;
   border: none;
   border-radius: 8px;
   font-size: 14px;
@@ -52,9 +64,9 @@
 }
 
 .add-button:hover {
-  background-color: #2563eb;
+  background-color: #4f46e5;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
 }
 
 .add-button:active {
@@ -62,15 +74,17 @@
 }
 
 .app-main {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 32px 24px;
+  width: 100%;
 }
 
 .patients-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
   gap: 24px;
+  align-items: start;
 }
 
 .loading-container,
@@ -82,7 +96,7 @@
   justify-content: center;
   min-height: 60vh;
   text-align: center;
-  color: white;
+  color: #fcfcfc;
 }
 
 .spinner {
@@ -114,17 +128,20 @@
 .empty-state svg {
   opacity: 0.8;
   margin-bottom: 24px;
+  stroke: #818cf8;
 }
 
 .empty-state h2 {
   font-size: 24px;
   margin: 0 0 8px 0;
+  color: #fcfcfc;
 }
 
 .empty-state p {
   font-size: 16px;
   opacity: 0.9;
   margin: 0 0 24px 0;
+  color: #a0a0a0;
 }
 
 .toast-container {
@@ -140,8 +157,19 @@
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
+    align-items: stretch;
+    padding: 20px 16px;
+  }
+
+  .header-title-section {
+    width: 100%;
+    flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
+    gap: 12px;
+  }
+
+  .header-logo {
+    height: 32px;
   }
 
   .add-button {

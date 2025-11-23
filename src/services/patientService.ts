@@ -1,4 +1,4 @@
-import { Patient } from '../types/patient';
+import type { Patient } from '../types/patient';
 
 const API_URL = 'https://63bedcf7f5cfc0949b634fc8.mockapi.io/users';
 

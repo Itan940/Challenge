@@ -1,18 +1,24 @@
-import { useState } from 'react';
 import type { Patient } from '../types/patient';
+import defaultAvatar from '../assets/img/Default_Profile.png';
 import './PatientCard.css';
 
 interface PatientCardProps {
   patient: Patient;
   onEdit: (patient: Patient) => void;
   onDelete: (id: string) => void;
+  isExpanded: boolean;
+  onToggleExpand: (id: string) => void;
 }
 
-export const PatientCard = ({ patient, onEdit, onDelete }: PatientCardProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
+export const PatientCard = ({
+  patient,
+  onEdit,
+  onDelete,
+  isExpanded,
+  onToggleExpand,
+}: PatientCardProps) => {
   const toggleExpand = () => {
-    setIsExpanded(prev => !prev);
+    onToggleExpand(patient.id);
   };
 
   const handleEdit = () => {
@@ -34,10 +40,19 @@ export const PatientCard = ({ patient, onEdit, onDelete }: PatientCardProps) => 
     });
   };
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = defaultAvatar;
+  };
+
   return (
     <div className="patient-card">
       <div className="patient-card-header">
-        <img src={patient.avatar} alt={patient.name} className="patient-avatar" />
+        <img 
+          src={patient.avatar || defaultAvatar} 
+          alt={patient.name} 
+          className="patient-avatar"
+          onError={handleImageError}
+        />
         <div className="patient-info">
           <h3 className="patient-name">{patient.name}</h3>
           <a

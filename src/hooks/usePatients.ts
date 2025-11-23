@@ -29,9 +29,9 @@ export const usePatients = () => {
     const newPatient: Patient = {
       id: crypto.randomUUID(),
       name: formData.name.trim(),
-      website: formData.website.trim(),
+      website: formData.website?.trim() || undefined,
       description: formData.description.trim(),
-      avatar: `https://i.pravatar.cc/150?u=${Date.now()}`,
+      avatar: formData.avatar?.trim() || undefined,
       createdAt: new Date().toISOString(),
     };
     setPatients(prev => [newPatient, ...prev]);
@@ -44,8 +44,9 @@ export const usePatients = () => {
           ? {
               ...patient,
               name: formData.name.trim(),
-              website: formData.website.trim(),
+              website: formData.website?.trim() || undefined,
               description: formData.description.trim(),
+              avatar: formData.avatar?.trim() || patient.avatar,
             }
           : patient
       )

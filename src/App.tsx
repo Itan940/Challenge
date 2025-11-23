@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import type { Patient } from './types/patient';
+import type { PatientFormData } from './types/patient';
 import { usePatients } from './hooks/usePatients';
 import { useToast } from './hooks/useToast';
 import { PatientCard } from './components/PatientCard';
 import { Modal } from './components/Modal';
 import { PatientForm } from './components/PatientForm';
 import { Toast } from './components/Toast';
+import logo from './assets/img/Logo_Light-it_White.svg';
 import './App.css';
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
   const { toasts, showToast, removeToast } = useToast();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingPatient, setEditingPatient] = useState<Patient | undefined>(undefined);
+  const [expandedCardId, setExpandedCardId] = useState<string | null>(null);
 
   const handleAddClick = () => {
     setEditingPatient(undefined);
@@ -28,13 +31,17 @@ function App() {
     setIsModalOpen(false);
     setEditingPatient(undefined);
   };
-
-  const handleFormSubmit = (formData: { name: string; website: string; description: string }) => {
+  const handleFormSubmit = (formData: PatientFormData) => {
+    const payload = {
+      name: formData.name,
+      website: formData.website ?? '',
+      description: formData.description,
+    };
     if (editingPatient) {
-      updatePatient(editingPatient.id, formData);
+      updatePatient(editingPatient.id, payload);
       showToast('Patient updated successfully!', 'success');
     } else {
-      addPatient(formData);
+      addPatient(payload);
       showToast('Patient added successfully!', 'success');
     }
     handleModalClose();
@@ -43,6 +50,10 @@ function App() {
   const handleDelete = (id: string) => {
     deletePatient(id);
     showToast('Patient deleted successfully!', 'success');
+  };
+
+  const handleToggleExpand = (id: string) => {
+    setExpandedCardId(prev => (prev === id ? null : id));
   };
 
   if (loading) {
@@ -71,9 +82,12 @@ function App() {
     <div className="app">
       <header className="app-header">
         <div className="header-content">
-          <div>
-            <h1 className="app-title">Patient Management</h1>
-            <p className="app-subtitle">Manage your patient records efficiently</p>
+          <div className="header-title-section">
+            <img src={logo} alt="Light-it" className="header-logo" />
+            <div>
+              <h1 className="app-title">Patient Manager</h1>
+              <p className="app-subtitle">Manage your patient records efficiently</p>
+            </div>
           </div>
           <button className="add-button" onClick={handleAddClick}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -107,7 +121,6 @@ function App() {
               />
             </svg>
             <h2>No patients yet</h2>
-            <p>Get started by adding your first patient</p>
             <button className="add-button" onClick={handleAddClick}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path
@@ -128,6 +141,8 @@ function App() {
                 patient={patient}
                 onEdit={handleEditClick}
                 onDelete={handleDelete}
+                isExpanded={expandedCardId === patient.id}
+                onToggleExpand={handleToggleExpand}
               />
             ))}
           </div>

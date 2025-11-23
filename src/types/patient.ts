@@ -1,20 +1,22 @@
 export interface Patient {
   id: string;
   name: string;
-  website: string;
+  website?: string;
   description: string;
-  avatar: string;
+  avatar?: string;
   createdAt: string;
 }
 
 export interface PatientFormData {
   name: string;
-  website: string;
+  website?: string;
   description: string;
+  avatar?: string;
 }
 
 export interface ValidationErrors {
   name?: string;
   website?: string;
   description?: string;
+  avatar?: string;
 }
