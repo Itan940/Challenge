@@ -1,22 +1,3 @@
-# Quick Start Guide
-
-## 🚀 Get Started in 3 Steps
-
-### Step 1: Install Dependencies
-```bash
-cd patient-management-app
-npm install
-```
-
-### Step 2: Start Development Server
-```bash
-npm run dev
-```
-
-### Step 3: Open in Browser
-Navigate to: **http://localhost:5173**
-
----
 
 ## 📱 Using the Application
 
@@ -28,9 +9,9 @@ Navigate to: **http://localhost:5173**
 ### Adding a Patient
 1. Click **"Add Patient"** button in the header
 2. Fill in the form fields:
-   - **Name**: 2-100 characters
+   - **Name**: 1-100 characters
    - **Website**: Valid URL (e.g., https://example.com)
-   - **Description**: 10-500 characters
+   - **Description**: 10-2000 characters
 3. Click **"Add Patient"** to save
 4. A success notification will appear
 
@@ -133,10 +114,3 @@ npm run build
 
 - **Full Documentation**: See `README.md`
 - **Technical Details**: See `DESIGN_DECISIONS.md`
-- **Project Overview**: See `PROJECT_SUMMARY.md`
-
----
-
-## 🎉 Enjoy!
-
-You're all set! Start exploring the Patient Management Application.
